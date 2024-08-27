@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/ian-mburu/Documents/Django_All/Connecting_To_Postgres/app_1/venv"
+VIRTUAL_ENV="/home/ian-mburu/Documents/Blog_D/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
