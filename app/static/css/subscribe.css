@@ -1,0 +1,30 @@
+/* styles.css */
+
+body {
+    background-color: #f1043f3f; 
+}
+
+h2 {
+    color: #412020; 
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold; 
+    font-size: 13px;
+}
+.form-group input {
+    border: #412020 solid 1px;
+    border-radius: 0;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 30%;
+    padding: 10px;
+} 
+
+.alert {
+    margin-top: 15px;
+}
