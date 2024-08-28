@@ -3,23 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Registration</title>
+    <title>Cuisine</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <!-- Navigation Bar -->
     <nav>
         <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="{% url 'index' %}">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="register">Register</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
     </nav>
 
+    <!-- Main Content -->
     <div class="content">
-        <h1>Welcome to MyApp!</h1>
-        <p>This is a simple web app with a navbar.</p>
+        
+        <!-- Blog Post Form -->
+        <div class="blog-form">
+            <h2>Add a New Recipe</h2>
+            <form method="post" action="{% url 'blog_posts' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Add Recipe</button>
+            </form>
+        </div>
+
+        <!-- Display All Blog Posts -->
+        <div class="blog-posts">
+            <h2>All Recipes</h2>
+            <ul>
+                {% for post in posts %}
+                    {% if post.is_published %}
+                    <li>
+                        <!-- Display the recipe image -->
+                        {% if post.image %}
+                            <img src="{{ post.image.url }}" alt="Recipe Image" style="width:200px; height:auto;">
+                        {% endif %}
+                        
+                        <!-- Display the recipe details -->
+                        <h3>{{ post.recipeTitle }}</h3>
+                        <p>{{ post.recipeDescription }}</p>
+                        <p>Posted by: {{ post.postedBy}}</p>
+                        <p>Date posted: {{ post.date_posted }}</p>
+                        <p>Last updated: {{ post.last_posted }}</p>
+                    </li>
+                    {% endif %}
+                {% empty %}
+                    <li>No recipes available.</li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </body>
 </html>

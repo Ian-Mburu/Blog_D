@@ -10,6 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 from pathlib import Path
 from decouple import config
 import dj_database_url
@@ -39,8 +43,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app'
+    'app',
+    'cloudinary',
+    'cloudinary_storage',
 ]
+
+# Cloudinary configuration
+cloudinary.config(
+    cloud_name = 'dim16caoe',  # Replace with your Cloudinary cloud name
+    api_key = '855692397377773',         # Replace with your Cloudinary API key
+    api_secret = 'YB8jGe0xw-K34iPjIHZeZ19PLH4'    # Replace with your Cloudinary API secret
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
