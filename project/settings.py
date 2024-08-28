@@ -55,6 +55,9 @@ cloudinary.config(
     api_secret = 'YB8jGe0xw-K34iPjIHZeZ19PLH4'    # Replace with your Cloudinary API secret
 )
 
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

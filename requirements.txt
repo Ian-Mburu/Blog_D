@@ -13,3 +13,4 @@ typing_extensions==4.12.2
 dj-database-url==1.2.0
 python-decouple==3.8
 cloudinary
+cloudinary-storage
