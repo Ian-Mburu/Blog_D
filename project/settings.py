@@ -33,6 +33,10 @@ INSTALLED_APPS = [
     'cloudinary_storage',
 ]
 
+CLOUDINARY_CLOUD_NAME = 'dim16caoe'
+CLOUDINARY_API_KEY = '855692397377773'
+CLOUDINARY_API_SECRET = 'YB8jGe0xw-K34iPjIHZeZ19PLH4'
+
 # Correct Cloudinary configuration
 cloudinary.config(
     cloud_name=config('CLOUDINARY_CLOUD_NAME'), 
