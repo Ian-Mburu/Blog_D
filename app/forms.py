@@ -19,6 +19,10 @@ class BlogForm(forms.ModelForm):
     class Meta:
         model = RecipeDescription
         fields = ['image', 'postedBy', 'recipeTitle', 'recipeDescription', 'is_published' ] 
+        widgets = {
+            'recipeTitle': forms.TextInput(attrs={'required': True}),
+            'recipeDescription': forms.Textarea(attrs={'required': True}),
+        }
 
     def __init__(self, *args, **kwargs):
         super(BlogForm, self).__init__(*args, **kwargs)

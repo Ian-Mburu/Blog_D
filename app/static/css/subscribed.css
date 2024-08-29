@@ -1,0 +1,71 @@
+/* General Page Style */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Heading Style */
+h2 {
+    color: #ff006a;
+    font-family: cursive;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* Input Field Style */
+.form-group input {
+    font-family: cursive;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: transparent;
+    padding: 8px;
+    width: calc(100% - 16px);
+    margin-bottom: 35px;
+}
+
+.form-group input:focus {
+    border-color: #ff006a;
+    outline: none;
+}
+
+/* Subscribe Button Style */
+.subscribed-btn {
+    display: flex;
+    margin-left: 100px;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    font-family: cursive;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #ff006a;
+    padding: 5px 10px ;
+}
+
+.subscribed-btn:hover {
+    background-color: #ff006a7c;
+}
+
+/* Alert Message Style */
+.alert {
+    background-color: #ff0000;
+    width: 170px;
+    padding: 6px;
+    border-radius: 5px;
+    color: #ffffff;
+    margin-top: 35px;
+    font-family: cursive;
+    font-size: 15px;
+}
+
+/* Message Container Style */
+.message-container {
+    margin-bottom: 20px;
+}

@@ -3,11 +3,19 @@ from .forms import UserForm, BlogForm
 from django.contrib import messages
 from .models import RecipeDescription, Subscriber
 
+from django.core.mail import send_mail
+
 
 def index(request):
     # Fetch all published posts
-    posts = RecipeDescription.objects.filter(is_published=True)
-    return render(request, 'index.html', {'posts': posts})
+    return render(request, 'index.html')
+from django.shortcuts import render
+
+def blog(request):
+    # Your logic here
+    return render(request, 'blog_form.html', {})
+
+
 
 
 def register(request):
@@ -36,7 +44,8 @@ def subscribe(request):
                 subscriber = Subscriber(email=email)
                 subscriber.save()
                 messages.success(request, 'Thank you for subscribing!')
-            return redirect('subscribe')
+
+                # send a confirmation email
         else:
             messages.error(request, 'Please enter a valid email.')
     return render(request, 'subscribe.html')
@@ -47,15 +56,19 @@ def blog_posts(request):
     if request.method == 'POST':
         form = BlogForm(request.POST, request.FILES)
         if form.is_valid():
-            form_instance = form.save(commit=False)
-            form_instance.is_published = True
-            form_instance.save()
-            print("Recipe saved:", form_instance.recipeTitle)  # Debug print
-            return redirect('index')  # Redirect to the index page to see the posts there
+            form.save()
+            return redirect('index')  # Redirect after successful submission
         else:
-            print("Form errors:", form.errors)  # Debug print for form errors
+            print("Form errors:", form.errors)  # Debugging line
     else:
         form = BlogForm()
-    
+
     posts = RecipeDescription.objects.filter(is_published=True)
-    return render(request, 'blog.html', {'posts': posts, 'form': form})  # Render to a separate blog page
+    return render(request, 'blog_form.html', { 'form': form})
+
+
+
+
+# 404 Error
+def error_404(request, exception):
+    return render(request, '404.html')

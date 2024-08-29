@@ -4,58 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuisine</title>
+    <link type="image/x-icon" sizes="64x64" rel="icon" href="../static/images/icons8-c-32.png">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav>
-        <ul>
-            <li><a href="{% url 'index' %}">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="{% url 'register' %}">Register</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
+        <a href="{% url 'index' %}">Home</a>
+        <a href="#">About</a>
+        <a href="{% url 'register' %}">Register</a>
+        <a href="{% url 'subscribe' %}">Subscribe</a>
+        <a href="{% url 'blog' %}">Add Recipe</a>
+
+        <form method="post" action="{% url 'blog' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Add Recipe</button>
+        </form>
     </nav>
 
-    <!-- Main Content -->
-    <div class="content">
-        
-        <!-- Blog Post Form -->
-        <div class="blog-form">
-            <h2>Add a New Recipe</h2>
-            <form method="post" action="{% url 'blog_posts' %}" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Add Recipe</button>
-            </form>
-        </div>
 
-        <!-- Display All Blog Posts -->
-        <div class="blog-posts">
-            <h2>All Recipes</h2>
-            <ul>
-                {% for post in posts %}
-                    {% if post.is_published %}
-                    <li>
-                        <!-- Display the recipe image -->
-                        {% if post.image %}
-                            <img src="{{ post.image.url }}" alt="Recipe Image" style="width:200px; height:auto;">
-                        {% endif %}
-                        
-                        <!-- Display the recipe details -->
-                        <h3>{{ post.recipeTitle }}</h3>
-                        <p>{{ post.recipeDescription }}</p>
-                        <p>Posted by: {{ post.postedBy}}</p>
-                        <p>Date posted: {{ post.date_posted }}</p>
-                        <p>Last updated: {{ post.last_posted }}</p>
-                    </li>
+    <!-- Display All Blog Posts -->
+    <div class="blog-posts">
+        <ul>
+            {% for post in posts %}
+                {% if post.is_published %}
+                <li>
+                    {% if post.image %}
+                        <img src="{{ post.image.url }}" alt="Recipe Image" style="width:200px; height:auto;">
                     {% endif %}
-                {% empty %}
-                    <li>No recipes available.</li>
-                {% endfor %}
-            </ul>
-        </div>
+                    <h3>{{ post.recipeTitle }}</h3>
+                    <p>{{ post.recipeDescription }}</p>
+                    <p>Posted by: {{ post.postedBy}}</p>
+                    <p>Date posted: {{ post.date_posted }}</p>
+                    <p>Last updated: {{ post.last_posted }}</p>
+                </li>
+                {% endif %}
+            {% empty %}
+                <p>No recipes available for now.</p>
+            {% endfor %}
+        </ul>
     </div>
 </body>
 </html>

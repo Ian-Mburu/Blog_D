@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subscribe</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Link to your custom stylesheet -->
+    <title>Subscribe</title>    <!-- Link to your custom stylesheet -->
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/subscribe.css' %}">
+    <link rel="stylesheet" href="{% static 'css/subscribed.css' %}">
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container">
         <h2>Subscribe to Our Newsletter</h2>
 
         <!-- Display Messages -->
@@ -26,15 +24,11 @@
         <form method="POST" action="{% url 'subscribe' %}">
             {% csrf_token %}
             <div class="form-group">
-                <label for="email">Email address:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email" required>
             </div>
-            <button type="submit" class="btn btn-primary">Subscribe</button>
+            <button type="submit" class="subscribed-btn">Subscribe</button>
         </form>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
