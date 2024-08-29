@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 import cloudinary
+from decouple import config
 import cloudinary.uploader
 import cloudinary.api
 
