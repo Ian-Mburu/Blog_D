@@ -40,6 +40,12 @@ cloudinary.config(
     api_secret=config('CLOUDINARY_API_SECRET')
 )
 
+import os
+print("CLOUDINARY_CLOUD_NAME:", os.getenv('CLOUDINARY_CLOUD_NAME'))
+print("CLOUDINARY_API_KEY:", os.getenv('CLOUDINARY_API_KEY'))
+print("CLOUDINARY_API_SECRET:", os.getenv('CLOUDINARY_API_SECRET'))
+
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 MIDDLEWARE = [
