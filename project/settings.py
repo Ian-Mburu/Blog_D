@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -50,10 +50,10 @@ INSTALLED_APPS = [
 
 
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dim16caoe',
-    'API_KEY': '855692397377773', 
-    'API_SECRET': 'YB8jGe0xw-K34iPjIHZeZ19PLH4' 
+CLOUDINARY = {
+    'cloud_name': config('CLOUDINARY_CLOUD_NAME'),  # Use environment variables for security
+    'api_key': config('CLOUDINARY_API_KEY'),
+    'api_secret': config('CLOUDINARY_API_SECRET'),
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
