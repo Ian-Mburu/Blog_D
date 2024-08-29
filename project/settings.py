@@ -50,7 +50,7 @@ INSTALLED_APPS = [
 
 
 
-CLOUDINARY = {
+cloudinary.config = {
     'cloud_name': config('CLOUDINARY_CLOUD_NAME'),  # Use environment variables for security
     'api_key': config('CLOUDINARY_API_KEY'),
     'api_secret': config('CLOUDINARY_API_SECRET'),
