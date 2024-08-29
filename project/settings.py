@@ -48,13 +48,15 @@ INSTALLED_APPS = [
     'cloudinary_storage',
 ]
 
-# Cloudinary configuration
-cloudinary.config(
-    cloud_name = 'dim16caoe',  # Replace with your Cloudinary cloud name
-    api_key = '855692397377773',         # Replace with your Cloudinary API key
-    api_secret = 'YB8jGe0xw-K34iPjIHZeZ19PLH4'    # Replace with your Cloudinary API secret
-)
 
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dim16caoe',
+    'API_KEY': '855692397377773', 
+    'API_SECRET': 'YB8jGe0xw-K34iPjIHZeZ19PLH4' 
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 MIDDLEWARE = [
