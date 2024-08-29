@@ -1,4 +1,4 @@
-import os
+
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -37,18 +37,11 @@ CLOUDINARY_CLOUD_NAME = 'dim16caoe'
 CLOUDINARY_API_KEY = '855692397377773'
 CLOUDINARY_API_SECRET = 'YB8jGe0xw-K34iPjIHZeZ19PLH4'
 
-# Correct Cloudinary configuration
 cloudinary.config(
-    cloud_name=config('CLOUDINARY_CLOUD_NAME'), 
-    api_key=config('CLOUDINARY_API_KEY'), 
-    api_secret=config('CLOUDINARY_API_SECRET')
+    cloud_name=CLOUDINARY_CLOUD_NAME,
+    api_key=CLOUDINARY_API_KEY,
+    api_secret=CLOUDINARY_API_SECRET
 )
-
-import os
-print("CLOUDINARY_CLOUD_NAME:", os.getenv('CLOUDINARY_CLOUD_NAME'))
-print("CLOUDINARY_API_KEY:", os.getenv('CLOUDINARY_API_KEY'))
-print("CLOUDINARY_API_SECRET:", os.getenv('CLOUDINARY_API_SECRET'))
-
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
